@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [0, 1, width, width+1],
         [0, 1, width, width+1]
     ]
+
     const iTetromino = [
         [1, width+1, width*2+1, width*3+1],
         [width, width+1, width+2, width+3],
@@ -55,17 +56,20 @@ document.addEventListener('DOMContentLoaded', () => {
             squares[currentPosition + index].classList.add('block')
         ))
     }
+
      function undraw() {
          current.forEach( index => (
              squares[currentPosition + index].classList.remove('block')
          ))
      }
+
      function moveDown() {
          undraw()
          currentPosition = currentPosition += width
          draw()
          freeze()
      }
+
      function moveRight() {
          undraw()
          const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1)
@@ -75,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
          }
          draw()
      }
+
      function moveLeft() {
          undraw()
          const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
@@ -84,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
          }
          draw()
      }
+     
      function rotate() {
          undraw()
          currentRotation ++
